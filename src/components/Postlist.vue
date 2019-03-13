@@ -24,29 +24,50 @@
             :class="[{put_good:(post.good === true),put_top:(post.top === true),
           'topiclist-tab':(post.good !== true && post.top !== true)}]"
           >{{post | tabFormatter}}</span>
-          <span>{{post.title}}</span>
+          <router-link
+            :to="{
+            name:'post_content',
+            params:{
+              id:post.id,
+              name:post.author.loginname
+            }
+            }"
+          >
+            <span>{{post.title}}</span>
+          </router-link>
           <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
         </li>
       </ul>
+      <li>
+        <pagination @handleList="renderList"></pagination>
+      </li>
     </div>
   </div>
 </template>
 
 <script>
+import pagination from "../components/Pagination";
+
 export default {
   name: "Postlist",
   data() {
     return {
       isLoading: false,
-      posts: []
+      posts: [],
+      putpage: 1
     };
+  },
+  components: {
+    pagination
   },
   methods: {
     getData() {
       this.$http
         .get("https://cnodejs.org/api/v1/topics", {
-          page: 1,
-          limit: 20
+          params: {
+            page: this.putpage,
+            limit: 20
+          }
         })
         .then(res => {
           this.isLoading = false;
@@ -55,6 +76,10 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    renderList(value) {
+      this.putpage = value;
+      this.getData();
     }
   },
   beforeMount() {

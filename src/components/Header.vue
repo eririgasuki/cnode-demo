@@ -2,9 +2,9 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container">
-        <a href="/">
+        <router-link :to="{name:'root'}">
           <img src="../assets/cnodejs_light.svg" alt>
-        </a>
+        </router-link>
         <ul>
           <li>
             <a href>首页</a>
@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name:'Header'
+  name: "Header"
 };
 </script>
 
