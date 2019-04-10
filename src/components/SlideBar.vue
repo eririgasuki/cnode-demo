@@ -94,12 +94,12 @@ export default {
 </script>
 
 <style scoped>
-.authersummay,
+.authorsummay,
 .recent_replies,
 .recent_topics {
   background-color: #fff;
 }
-.autherinfo {
+.authorinfo {
   width: 328px;
   float: right;
   margin-top: 0;

@@ -12,11 +12,11 @@
           <li>•{{post.visit_count}} 次浏览</li>
           <li>•来自 {{post | tabFormatter}}</li>
         </ul>
-        <div v-html="post.content" class="topic_content"></div>
+        <div v-html="post.content" id="content" class="topic_content"></div>
       </div>
       <div id="reply">
         <div class="topbar">回复</div>
-        <div v-for="(reply,index) in post.replies" :key="reply.id">
+        <div v-for="(reply,index) in post.replies" :key="reply.id" class="replySec">
           <div class="replyUp">
             <router-link :to="{
               name:'user_info',

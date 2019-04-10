@@ -13,12 +13,18 @@ import Header from "./components/Header";
 export default {
   name: "App",
   components: {
-    Header,
+    Header
   }
 };
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .main {
   width: 80%;
   margin: 0 auto;
